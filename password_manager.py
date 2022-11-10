@@ -29,7 +29,7 @@ except:
     pass
 
 while True:
-    print("\nIf you want to sign in your to account write login.")
+    print("\nIf you want to sign in to your account write login.")
     print("If you want to add a new account write add.\nIf you want to view existing accounts write view.")
     print("If you want to remove existing account write remove.")
     mode = input("Press q to quit\n").lower()
