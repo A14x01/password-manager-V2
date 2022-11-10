@@ -1,5 +1,5 @@
 from cipher import rot13
-from func import view, add, remove, login
+from func import view, add, remove, login, reset
 
 try:
     with open("master.txt", "x") as f:
@@ -9,6 +9,7 @@ except:
 
 with open("master.txt", "r") as f:
     master = f.readlines()
+    print("If you want to reset you master password write reset")
     while True:
         if master == []:
             with open("master.txt", "a") as f:
@@ -21,7 +22,12 @@ with open("master.txt", "r") as f:
             if rot13(master_password) == master[0]:
                 print("Welcome")
                 break
-            print("Wrong password, try again")
+            elif master_password == "reset":
+                reset()
+                with open("master.txt", "r") as f:
+                    master = f.readlines()
+                continue
+        print("Wrong password, try again")
 try:
     with open('password.txt', 'x') as f:
         f.close()
