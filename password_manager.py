@@ -18,10 +18,10 @@ with open("master.txt", "r") as f:
                 break
         else:
             master_password = input("Master password: ")
-            print("Wrong password, try again")
             if rot13(master_password) == master[0]:
                 print("Welcome")
                 break
+            print("Wrong password, try again")
 try:
     with open('password.txt', 'x') as f:
         f.close()
