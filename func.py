@@ -1,7 +1,5 @@
 from cipher import rot13
 
-
-
 def login():
     decrypted_users = []
     decrypted_passwords = []
@@ -93,7 +91,7 @@ def remove():
                         for line in text.splitlines():
                             list.append(line)  
                         if decrypted_passwords[index_of_user] == account_password:
-                            list.remove(rot13(account_name + ":" + account_password))
+                            list.remove(rot13(account_name + ":" + rot13(account_password)))
                             with open("password.txt", "w") as f:
                                 for line in list:
                                     f.write(line + "\n")
@@ -102,3 +100,8 @@ def remove():
                         else:
                             print("This account does not exist")
                             break
+
+def reset():
+    user_rest = input("Write new password:")
+    with open("master.txt", "w") as f:
+        f.write(rot13(user_rest))
