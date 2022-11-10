@@ -9,15 +9,19 @@ except:
 
 with open("master.txt", "r") as f:
     master = f.readlines()
-    if master == []:
-        with open("master.txt", "a") as f:
-            master_password = input("Make your master password: ")
-            f.write(rot13(master_password))
-            print("Welcome to password manager")
-    else:
-        master_password = input("Master password: ")
-        if rot13(master_password) == master[0]:
-            print("Welcome")
+    while True:
+        if master == []:
+            with open("master.txt", "a") as f:
+                master_password = input("Make your master password: ")
+                f.write(rot13(master_password))
+                print("Welcome to password manager")
+                break
+        else:
+            master_password = input("Master password: ")
+            print("Wrong password, try again")
+            if rot13(master_password) == master[0]:
+                print("Welcome")
+                break
 try:
     with open('password.txt', 'x') as f:
         f.close()
